@@ -5,7 +5,7 @@
 
 //Edited on Nov. 27 2013. Add and format the whole object.
 
-
+// carine is in the house
 
 
 function cashRegister(){
