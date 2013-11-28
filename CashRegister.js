@@ -9,24 +9,25 @@
 
 
 function cashRegister(){
-	
+	function init(){
 	//Section pour les variables
 	
 	//Money related variables
-	var total = 0;
-	var subTotal = 0;
-	var refund = 0;
-	var user = {userID : ID, promoCardTotal : card}; //To store card and promotion ID also including total points ammounts
-	var exchangeRate = [[country, rate], [country, rate]]//will store each exchange rate along with their respective country
-	var totalDiscount = 0;
-	var itemOnReceipt = [];
-	var isPrint = true;
-	var lastProductScan = 0; //Var to store the last product code Scanned
 	
 	//Article related variable
+		var total = 0;
+		var subTotal = 0;
+		var refund = 0;
+		var user = {userID : ID, promoCardTotal : card}; //To store card and promotion ID also including total points amounts
+		var exchangeRate = [[country, rate], [country, rate]]//will store each exchange rate along with their respective country
+		var totalDiscount = 0;
+		var itemOnReceipt = [];
+		var isPrint = true;
+		var lastProductScan = 0; //Var to store the last product code Scanned
+		
 	var taxes ={
-		TPS : 0, //This is the ammount of TPS related to the current purchase
-		TVQ : 0, //This is the ammount of TVQ related to the current purchase
+		TPS : 0, //This is the amount of TPS related to the current purchase
+		TVQ : 0, //This is the amount of TVQ related to the current purchase
 		TPSRate : 0, //This is the TPS rate
 		TVQRate : 0 //This is the TVQ rate
 	}
@@ -69,7 +70,11 @@ function cashRegister(){
 
 	
 
-	}
+		}
+		
+	openShift()	
+		
+	}// End of init
 
 		
 
