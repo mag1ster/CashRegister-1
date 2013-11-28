@@ -8,3 +8,5 @@ console.log("bobby is dead");
 
 function ageRequest (){ //* pop up avec un if item= alcool && tobacco prompt: did u see id 18 or older? confirm yes or no*/
 	}
+function giveChangeBack (){ /* Prompt : how much he paid ( var change = prompt- total) confirm : result: var*/
+	}
