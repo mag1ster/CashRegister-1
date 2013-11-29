@@ -4,98 +4,147 @@
 //Stephanie & Karine & Marie-Jo
 
 //Edited on Nov. 27 2013. Add and format the whole object.
+	
+
+
+// JavaScript Document
+
+
+//Store Global Variable and inventory related
+
+function Products(name, id, price, taxable, mustBeAdult) {
+	this.name=name;
+	this.description = "";
+	this.id= id;
+	this.taxable = taxable;
+	this.code = null;
+	this.cost = price;
+	this.sellPrice = price * 1.20;
+	this.category = [];
+	this.mustBeAdult = mustBeAdult; //Boolean type
+}; //Store all the articles in an object
+
+function Coupon(code,name,related,discount,min_qte, expireDate){
+	this.code = code;
+	this.name = name;
+	this.related = productRelated;
+	this.discount = discount;
+	this.min_qte = min_qte;
+	this.expireDate = expireDate
+	}
+	
+
+var TheStore = {
+	name:"",
+	adressLine1:"",
+	adressLine2:"",
+	mainPhone:"",
+	thankYou:"",
+	logoURL:"",
+	returnPolicy:"",
+}
+
+var employee = {
+		
+	employeID : id,
+	firstName : name,
+	lastName : lastName,
+	passWord : passWord
+		
+}
+
+var categories = {
+	grocery : [],
+	meatDeliFish : [],
+	beerWine: [],
+	fruitsVegetables: [],
+	readytoEat: [],
+	lotery: []
+}
+
+var exchangeRate = [[country, rate], [country, rate]]//will store each exchange rate along with their respective country
+
+
+
+
+
+
+var customer = {userID : ID, promoCardTotal : card}; //To store card and promotion ID also including total points ammounts
 
 
 
 
 function cashRegister(){
-	function init(){
-	//Section pour les variables
 	
-	//Money related variables
+	//Variable tied to the current session
+	var total = 0;
+	var subTotal = 0;
+	var refund = 0;
+	var totalDiscount = 0;
+	var itemOnReceipt = [];
+	var isPrint = true;
+	var lastProductScan = 0; //Var to store the last product code Scanned
+	var card = [visa, masterCard, americanExpress, debit];
 	
-	//Article related variable
-		var total = 0;
-		var subTotal = 0;
-		var refund = 0;
-		var user = {userID : ID, promoCardTotal : card}; //To store card and promotion ID also including total points amounts
-		var exchangeRate = [[country, rate], [country, rate]]//will store each exchange rate along with their respective country
-		var totalDiscount = 0;
-		var itemOnReceipt = [];
-		var isPrint = true;
-		var lastProductScan = 0; //Var to store the last product code Scanned
-		
-		
 	var taxes ={
-		TPS : 0, //This is the amount of TPS related to the current purchase
-		TVQ : 0, //This is the amount of TVQ related to the current purchase
-		TPSRate : 0, //This is the TPS rate
-		TVQRate : 0 //This is the TVQ rate
+		tpsTotal : 0, //This is the ammount of TPS related to the current purchase
+		tvqTotal : 0, //This is the ammount of TVQ related to the current purchase
+		TPS_RATE : 0.5,
+		TVQ_RATE : 0.975	
 	}
 	
-	var products={}; //Store all the articles in an object
-	
-	var product = {
-		price : 0,
-		productCode : "",
-		type : "",
-		promotions : 0,
-		isTaxable : true,
-		description : ""
+	var readingOfTheDay = []; //Store in all the variable for the days in an array made of objects
+		
+	function Receipt(subTotal, total, tpsTotal, tvqTotal, refund, itemOnReceipt, currentEmployee, paiementMethod, coupon, customer){
+		this.subTotal = subTotal;
+		this.total = total;
+		this.tpsTotal = tpsTotal;
+		this.tvqTotal = tvqTotal;
+		this.refund = refund;
+		this.itemOnReceipt = itemOnReceipt;
+		this.currentEmployee = currentEmployee;
+		this.paiementMethod = paiementMethod;
+		this.customer = customer;
 	}
+	
 	
 	var currentEmployee = 0;
 	//Employee variables
-	var employee = {
+	
+	
+	function Calculate(receipt){ //Functon to be call for everytime there is a change in the price. The display of the UI will be updated with each function
+			
+		function calculateSubTotal(){
+		}
+			
+		function calculateTax(){		
+		}
 		
-		employeID : id,
-		firstName : name,
-		lastName : lastName,
-		passWord : passWord
-		
+		function calculateTotal(){
+		}
+			
+
 	}
 	
-	var categories = {
-
-	grocery : [],
-
-	meatDeliFish : [],
-
-	beerWine: [],
-
-	fruitsVegetables: [],
-
-	readytoEat: [],
-
-	lotery: []
-
-	
-
+	function Paiement(receipt){
+		
+		function paiementMethod(){
+			//On call display 3 buttons (credit, debit, cash)
+			// Define the credit (Mastercard, Visa, American Express)
+			// If cash prompt the amount. Refund = Amount - Total. Also call in roundRefund to convert the cents using :
+			//var result = Math.round(original*100)/100;
 		}
 		
-	openShift()	
-		
-	}// End of init
-
-		
-
-	function closeShift(){
-	
-			//if( password is correct than close the cash)
-	
-			//Print the receipt with all of the transactions(return all transaction)		
-	
-	
-	
-	
+		function calculateChange(){ //
 		}
+		
+	}
+		
 	
+	function storeTransaction(receipt){
 	
-	
-	
-	function storeTransaction(){
-	
-		// store all of the transaction of the day by the employe ID 
+		currentDayReceipt.push(receipt);
+		// Once a Receipt is complete add it to this Array
 	
 	}
 
@@ -104,21 +153,38 @@ function cashRegister(){
 	
 	//Fonction Globale
 	
-	function scanItem(){
+	function scanItem(id){
 		//function that take in the Product code to search in the article object 
 		//return that object then call addItemOnReceipt
+		//Coupon would be scan at the same moment as they do have a product Id and are added on the receipt
+		addItemOnReceipt(id);
 	}
 	
-	function getTaxRate(){
-	}
 	
-	function Employe(id, name, lastName, passWord){ //Constructor to create the object employee
-	}
 	
-	function Article(price, productCode, type, promotions, isTaxable, description){ //Constructor of all the products
-	}
-	
-	function addItemOnReceipt(){ 
+	function addItemOnReceipt(id){ 
+		
+		function isLegalAge(){
+			
+			if(product.mustBeAdult === true){
+				
+				var minimumLegal_age = getYear - 18;
+				x = confirm("Please check if the customer is born after " + minimumLegal_age);
+				
+				if(x === "false"){
+					return "The Customer must be 18. Item removed";
+				}
+			}
+			
+			//Check to see if mustBeAdult is True then proceed
+			//Confirm the age of the customer if false remove current item
+		}
+		
+		function checkCoupon(){
+			
+			//Check to see if coupon is still valid and if it's tied to the right product
+			
+		}
 		//function to add the price of the article on subTotal
 		//Also add the article product code to an array itemOnReceipt[] to store in item quick and change var lastProductScanned to the said Product
 		//Also make a call to displayInformation.displayCash to update the ammount shown.
@@ -137,12 +203,6 @@ function cashRegister(){
 		//take the last object stored in lastProductScanned and add a certain quantity define by the user prompt
 	}
 	
-	function paiementMethod(){
-		//On call display 3 buttons (credit, debit, cash)
-		// Define the credit (Mastercard, Visa, American Express)
-		// If cash prompt the amount. Refund = Amount - Total. Also call in roundRefund to convert the cents using :
-		//var result = Math.round(original*100)/100;
-	}
 	
 	function updateExchangeRate(){
 	}
@@ -175,7 +235,7 @@ function cashRegister(){
 		//False = don't print the receipt
 	}
 	
-	function printReceipt(){
+	function printReceipt(receipt){
 		
 		//Look to see if isPrint is true then print
 		//Add thank you message
@@ -206,29 +266,12 @@ function cashRegister(){
 	//Function to calculate the ammount due
 	
 	
-	function calculateTax(){
-	}
-	
-	function calculateSubTotal(){
-	}
-	
-	function calculateTotal(){
-	}
-	
-	function ageRequest (){ //* pop up avec un if item= alcool && tobacco prompt: did u see id 18 or older? confirm yes or no*/
-	}	
-	
-	function giveChangeBack (){ /* Prompt : how much he paid ( var change = prompt- total) confirm : result: var*/
-	}
+
 } //End of main object CashRegister()
 
 
 
 
-	
-// var coupon =  ( code , name , amount, min_qty , percentage_off, reason )
-// this.expiration.date = new Date ()
-//this.valid = true
-// this.apply  = fucntion ()
-//this.condition = function ()
+
+
 
