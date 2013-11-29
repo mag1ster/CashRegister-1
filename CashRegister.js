@@ -24,6 +24,7 @@ function cashRegister(){
 		var itemOnReceipt = [];
 		var isPrint = true;
 		var lastProductScan = 0; //Var to store the last product code Scanned
+		var discnt = 0;   // no default percent discount
 		
 	var taxes ={
 		TPS : 0, //This is the amount of TPS related to the current purchase
@@ -182,6 +183,55 @@ function cashRegister(){
 		//Add Adress of the stores
 		
 	}
+	
+	
+  
+  var coupons = new Array (  // place to put coupon codes
+	"coup1",                 // 1st coupon value - comma seperated
+	"coup2",                 // 2nd coupon value - add all you want
+	"coup3"                  // 3rd coupon value
+  );
+  var coupdc  = new Array (  // place to put discounts for coupon vals
+	5,
+	10,
+	15
+  );
+  
+  var coupval = "(blanket)"; // what user entered as coupon code
+  
+  function ChkCoup () {      // check user coupon entry
+  var i;
+	discnt = 0;              // assume the worst
+	for (i=0; i<coupons.length; i++) {
+	  if (coupval == coupons[i]) {
+		discnt = coupdc[i];  // remember the discount amount
+		
+	  }
+	}
+	
+  }
+  
+  function Dollar (val) {      // force to valid dollar amount
+  var str,pos,rnd=0;
+	
+	  // float, round, escape
+	
+  }
+  
+  function ReadForm (obj1) {  // apply the discount
+  var amt,des;
+	       // base amount
+	           // base description
+  
+	if (discnt > 0) {                   // only if discount is active
+	  
+	}
+  
+	
+  }
+
+
+// Custom price
 	
 	
 	//Employee related functions
